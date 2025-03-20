@@ -3,11 +3,11 @@
 **Velox** is a Bevy crate offering a **smooth and customizable 3D Character Controller**, powered by **Avian Physics**. Perfect for **FPS, TPS, platformers, and more**, it provides robust handling of movement, jumping, gravity, and collisions.
 
 ## 🌟 Features
-✅ **Compatible with Avian Physics** – Uses a lightweight and efficient physics engine.
-✅ **Natural movement** – Supports walking, jumping, gravity, slope handling, and collisions.
-✅ **Customizable** – Adjust speed, acceleration, forces, and other parameters.
-✅ **Easy to integrate** – Bevy plugin ready to use, designed for 3D games.
-✅ **Extensible** – Easily add your own behaviors.
+- ✅ **Compatible with Avian Physics** – Uses a lightweight and efficient physics engine.
+- ✅ **Natural movement** – Supports walking, jumping, gravity, slope handling, and collisions.
+- ✅ **Customizable** – Adjust speed, acceleration, forces, and other parameters.
+- ✅ **Easy to integrate** – Bevy plugin ready to use, designed for 3D games.
+- ✅ **Extensible** – Easily add your own behaviors.
 
 ---
 
