@@ -1,6 +1,19 @@
 [package]
-name = "stance"
+name = "velox"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+bevy = { version = "*", default-features = false, features = [
+    "multi_threaded",
+    "bevy_state",
+    "bevy_asset",
+    "bevy_core_pipeline",
+] }
+avian3d = { version = "*", default-features = false, features = [
+    "3d",
+    "f32",
+    "parry-f32",
+    "parallel",
+    "simd",
+] }

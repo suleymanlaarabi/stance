@@ -1,14 +1,15 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+use bevy::prelude::*;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub mod components;
+pub mod prelude;
+mod systems;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+use systems::movement::move_player;
+
+pub struct VeloxCharacterPlugin;
+
+impl Plugin for VeloxCharacterPlugin {
+    fn build(&self, app: &mut App) {
+        app.add_systems(Update, move_player);
     }
 }
