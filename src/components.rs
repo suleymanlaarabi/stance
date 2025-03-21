@@ -1,3 +1,4 @@
+use crate::plugins::grounded_plugin::components::CharacterGroundSensor;
 use avian3d::prelude::*;
 use bevy::{input::keyboard::NativeKeyCode, prelude::*};
 
@@ -28,7 +29,12 @@ impl CharacterInputConfig {
 
 #[derive(Component)]
 #[require(
+    LinearVelocity,
+    RigidBody(|| RigidBody::Dynamic),
+    Collider(|| Collider::cuboid(5., 15., 5.)),
     LockedAxes(|| LockedAxes::ROTATION_LOCKED),
+    GravityScale(|| GravityScale(5.5)),
+    CharacterGroundSensor,
     Transform
 )]
 pub struct CharacterController;
