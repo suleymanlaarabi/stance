@@ -1,6 +1,6 @@
-use crate::plugins::grounded_plugin::components::CharacterGroundSensor;
 use avian3d::prelude::*;
 use bevy::{input::keyboard::NativeKeyCode, prelude::*};
+use gravix::components::*;
 
 #[derive(Component)]
 pub struct CharacterInputConfig {
@@ -27,13 +27,6 @@ impl CharacterInputConfig {
     }
 }
 
-#[derive(PhysicsLayer, Default)]
-pub enum CharacterLayer {
-    Character,
-    #[default]
-    Ground,
-}
-
 #[derive(Component)]
 #[require(
     Transform::from_xyz(0., 35., 0.),
@@ -42,7 +35,7 @@ pub enum CharacterLayer {
     Collider::cuboid(5., 15., 5.),
     LockedAxes::ROTATION_LOCKED,
     GravityScale(5.5),
-    CharacterGroundSensor
+    GroundSensor
 )]
 pub struct CharacterController;
 

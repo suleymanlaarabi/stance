@@ -15,7 +15,7 @@
 Add the dependency to your **Cargo.toml** file:
 ```toml
 [dependencies]
-velox = "0.1"
+velox = { git = "https://github.com/suleymanlaarabi/velox", branch = "main"}
 ```
 
 ---
@@ -25,12 +25,13 @@ velox = "0.1"
 ```rust
 use bevy::prelude::*;
 use velox::VeloxPlugin;
-use avian_physique::AvianPhysiquePlugin;
+use avian3d::prelude::*;
 
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
-        .add_plugins(VeloxPlugin::default())
+        .add_plugins(PhysicsPlugins::default())
+        .add_plugins(VeloxPlugin)
         .run();
 }
 ```
@@ -41,7 +42,14 @@ use bevy::prelude::*;
 use velox::CharacterController;
 
 fn setup(mut commands: Commands) {
-    commands.spawn(CharacterController::default());
+    commands
+        .spawn((
+            CharacterController,
+            CharacterInputConfig::default(),
+        ))
+        .with_children(|parent| {
+            parent.spawn(CharacterControllerCamera);
+        });
 }
 ```
 
