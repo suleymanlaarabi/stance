@@ -7,7 +7,7 @@ const PLAYER_SPEED: f32 = 50.;
 pub fn move_player(
     mut query: Query<(&mut Transform, &CharacterInputConfig), With<CharacterController>>,
     camera_query: Query<
-        (&Parent, &Transform),
+        (&ChildOf, &Transform),
         (
             With<CharacterControllerCamera>,
             Without<CharacterController>,
@@ -19,10 +19,10 @@ pub fn move_player(
     let delta_time = time.delta_secs();
 
     for (parent, camera_transform) in &camera_query {
-        let (mut player_transform, config) = match query.get_mut(parent.get()) {
+        let (mut player_transform, config) = match query.get_mut(parent.parent) {
             Ok(transform) => transform,
             Err(_) => {
-                panic!("Unable to get the player transform parent from player camera");
+                continue;
             }
         };
         let mut direction = Vec3::ZERO;

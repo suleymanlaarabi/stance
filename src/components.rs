@@ -27,20 +27,27 @@ impl CharacterInputConfig {
     }
 }
 
+#[derive(PhysicsLayer, Default)]
+pub enum CharacterLayer {
+    Character,
+    #[default]
+    Ground,
+}
+
 #[derive(Component)]
 #[require(
+    Transform::from_xyz(0., 35., 0.),
     LinearVelocity,
-    RigidBody(|| RigidBody::Dynamic),
-    Collider(|| Collider::cuboid(5., 15., 5.)),
-    LockedAxes(|| LockedAxes::ROTATION_LOCKED),
-    GravityScale(|| GravityScale(5.5)),
-    CharacterGroundSensor,
-    Transform
+    RigidBody::Dynamic,
+    Collider::cuboid(5., 15., 5.),
+    LockedAxes::ROTATION_LOCKED,
+    GravityScale(5.5),
+    CharacterGroundSensor
 )]
 pub struct CharacterController;
 
 #[derive(Component)]
-#[require(Camera3d)]
+#[require(Transform, Camera3d)]
 pub struct CharacterControllerCamera;
 
 #[derive(Component)]
