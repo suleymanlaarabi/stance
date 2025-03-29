@@ -13,16 +13,11 @@ pub fn process_ground_start_sensor(
 ) {
     for CollisionStarted(c1, c2) in collision_start_event_reader.read() {
         if query_groundsensor.contains(*c1) {
-            println!("start");
             if query_ground.contains(*c2) {
-                println!("inserted: {}", *c1);
                 commands.entity(*c1).insert(CharacterOnGround);
             }
         } else if query_groundsensor.contains(*c2) {
-            println!("start");
             if query_ground.contains(*c1) {
-                println!("inserted");
-                println!("inserted: {}", *c2);
                 commands.entity(*c2).insert(CharacterOnGround);
             }
         }
