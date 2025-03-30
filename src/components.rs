@@ -64,6 +64,17 @@ impl Default for CharacterMovement {
 pub struct CharacterJump {
     pub strength: f32,
     pub max_jumps: u8,
+    pub count: u8,
+}
+
+impl Default for CharacterJump {
+    fn default() -> Self {
+        Self {
+            strength: 24.,
+            max_jumps: 1,
+            count: 0,
+        }
+    }
 }
 
 #[derive(Component)]
