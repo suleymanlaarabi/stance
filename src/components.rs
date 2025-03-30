@@ -50,6 +50,16 @@ pub struct CharacterMovement {
     pub deceleration: f32,
 }
 
+impl Default for CharacterMovement {
+    fn default() -> Self {
+        Self {
+            speed: 70.,
+            acceleration: 0.,
+            deceleration: 0.,
+        }
+    }
+}
+
 #[derive(Component)]
 pub struct CharacterJump {
     pub strength: f32,

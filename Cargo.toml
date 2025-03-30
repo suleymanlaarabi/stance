@@ -17,4 +17,5 @@ avian3d = { git = "https://github.com/Jondolf/avian", branch = "main", default-f
     "parallel",
     "simd",
 ] }
-gravix = { git = "https://github.com/suleymanlaarabi/gravix", branch = "main" }
+# gravix = { git = "https://github.com/suleymanlaarabi/gravix", branch = "main" }
+gravix = { workspace = true }

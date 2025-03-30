@@ -2,10 +2,11 @@ use bevy::prelude::*;
 
 use crate::components::*;
 
-const PLAYER_SPEED: f32 = 50.;
-
 pub fn move_player(
-    mut query: Query<(&mut Transform, &CharacterInputConfig), With<CharacterController>>,
+    mut query: Query<
+        (&mut Transform, &CharacterInputConfig, &CharacterMovement),
+        With<CharacterController>,
+    >,
     camera_query: Query<
         (&ChildOf, &Transform),
         (
@@ -19,7 +20,7 @@ pub fn move_player(
     let delta_time = time.delta_secs();
 
     for (parent, camera_transform) in &camera_query {
-        let (mut player_transform, config) = match query.get_mut(parent.parent) {
+        let (mut player_transform, config, movement) = match query.get_mut(parent.parent) {
             Ok(transform) => transform,
             Err(_) => {
                 continue;
@@ -40,7 +41,7 @@ pub fn move_player(
         }
         if direction != Vec3::ZERO {
             direction.y = 0.;
-            let direction = (direction.normalize()) * PLAYER_SPEED * delta_time;
+            let direction = (direction.normalize()) * movement.speed * delta_time;
             player_transform.translation.x += direction.x;
             player_transform.translation.z += direction.z;
         }
