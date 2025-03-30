@@ -39,13 +39,14 @@ fn main() {
 ### 2️⃣ **Creating a character with Velox**
 ```rust
 use bevy::prelude::*;
-use velox::CharacterController;
+use velox::prelude::*;
 
 fn setup(mut commands: Commands) {
     commands
         .spawn((
             CharacterController,
             CharacterInputConfig::default(),
+            CharacterMovement::default()
         ))
         .with_children(|parent| {
             parent.spawn(CharacterControllerCamera);
