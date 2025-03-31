@@ -10,7 +10,7 @@ pub fn move_player(
     camera_query: Query<
         (&ChildOf, &Transform),
         (
-            With<CharacterControllerCamera>,
+            With<CharacterControllerFpsCamera>,
             Without<CharacterController>,
         ),
     >,

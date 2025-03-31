@@ -41,7 +41,7 @@ pub struct CharacterController;
 
 #[derive(Component)]
 #[require(Transform, Camera3d)]
-pub struct CharacterControllerCamera;
+pub struct CharacterControllerFpsCamera;
 
 #[derive(Component)]
 pub struct CharacterMovement {
@@ -82,6 +82,3 @@ pub struct CharacterDash {
     pub force: f32,
     pub cooldown: f32,
 }
-
-#[derive(Component)]
-pub struct CharacterOnGround;

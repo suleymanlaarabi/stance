@@ -2,12 +2,12 @@ use bevy::{input::mouse::AccumulatedMouseMotion, prelude::*};
 
 use std::f32::consts::FRAC_PI_2;
 
-use crate::components::CharacterControllerCamera;
+use crate::components::CharacterControllerFpsCamera;
 
 const PITCH_LIMIT: f32 = FRAC_PI_2 - 0.01;
 
 pub fn rotate_player_camera(
-    mut query: Query<&mut Transform, With<CharacterControllerCamera>>,
+    mut query: Query<&mut Transform, With<CharacterControllerFpsCamera>>,
     accumulated_mouse_motion: Res<AccumulatedMouseMotion>,
 ) {
     let delta = accumulated_mouse_motion.delta * 1.5;
