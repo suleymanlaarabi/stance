@@ -1,5 +1,9 @@
 use avian3d::prelude::*;
-use bevy::{input::keyboard::NativeKeyCode, prelude::*};
+use bevy::{
+    core_pipeline::{bloom::Bloom, tonemapping::Tonemapping},
+    input::keyboard::NativeKeyCode,
+    prelude::*,
+};
 use gravix::components::*;
 
 #[derive(Component)]
@@ -40,7 +44,16 @@ impl CharacterInputConfig {
 pub struct CharacterController;
 
 #[derive(Component)]
-#[require(Transform, Camera3d)]
+#[require(
+    Transform,
+    Camera3d,
+    Camera = Camera {
+        hdr: true,
+        ..default()
+    },
+    Tonemapping::TonyMcMapface,
+    Bloom::NATURAL
+)]
 pub struct CharacterControllerFpsCamera;
 
 #[derive(Component)]
@@ -49,6 +62,9 @@ pub struct CharacterMovement {
     pub acceleration: f32,
     pub deceleration: f32,
 }
+
+#[derive(Component)]
+pub struct CharacterAcceleration(pub f32);
 
 impl Default for CharacterMovement {
     fn default() -> Self {
