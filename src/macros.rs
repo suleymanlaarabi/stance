@@ -3,7 +3,7 @@ macro_rules! activation_state {
     ($var:ident) => {
         #[derive(bevy::prelude::States, Debug, Clone, PartialEq, Eq, Hash)]
         pub enum $var {
-            Enable,
+            Enabled,
             Disabled,
         }
     };
